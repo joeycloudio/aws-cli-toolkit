@@ -4,4 +4,6 @@ aws ec2 run-instances \
 --security-group-ids sg-08441ae19d454e75c \
 --subnet-id subnet-08f3e82ee12b32235 \
 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Nginx}]' \
---user-data file://user-data.txt #or sh extension, if script is valid, either extension will run
+--user-data file://user-data.txt 
+
+# or sh extension, if script is valid, either extension will run
