@@ -6,4 +6,15 @@ aws ec2 run-instances \
 --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=Nginx}]' \
 --user-data file://user-data.txt 
 
+------------------------------------------------
+COMMAND ENDS ABOVE
+
+------------------------------------------------
+NOTES BELOW
+
 # or sh extension, if script is valid, either extension will run
+
+return will move the screen down line by line
+space bar will skip several lines to get to the end faster
+q will escape out of output altogether
+
