@@ -1,0 +1,16 @@
+aws ec2 describe-instances | grep -i “public” (quick and dirty)
+
+aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text (more precise)
+
+aws ec2 describe-instances --query "Reservations[*].Instances[*].[PublicIpAddress, State.Name]" --output table
+
+aws ec2 describe-instances --filters "Name=tag:Name,Values=Nginx"
+
+aws ec2 describe-instances --filters "Name=tag:Name,Values=Nginx" --query 'Reservations[].Instances[].PublicIpAddress'
+
+---------------------------------------------------------------
+NOTES BELOW
+
+the query parameter expression (JMESPath syntax)
+allows extraction of specific information efficiently from JSON responses of AWS services
+important to know the nested JSON structure of responses
