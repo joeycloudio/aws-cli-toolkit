@@ -12,3 +12,12 @@ docker build -t nextwork-flask-backend .
 # Docker needs root level access to create containers or build container images
 
 whoami
+
+sudo usermod -a -G docker ec2-user
+# adds regular user to Docker group
+# Docker group is group in Linux systems that gives users the permission to run Docker commands
+# no need type sudo every time, after adding user
+
+# usermod - modifies user's account in the system
+# -a flag (append) makes sure user doesn't get removed from other groups, without it user would be removed from all groups not listed
+# -G flag specifies the group user should be added to
