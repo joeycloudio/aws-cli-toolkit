@@ -26,3 +26,5 @@ sudo usermod -a -G docker ec2-user
 
 groups ec2-user
 #check the user's permissions
+
+#run build command again BUT YOU NEED TO CD INTO THE SUBDIRECTORY (folder of cloned github repo)
