@@ -34,3 +34,8 @@ aws ecr create-repository \
   --image-scanning-configuration scanOnPush=true \
 
 #create a new ECR repo using the above command
+
+# in ECR we did -
+# 1 login to ECR
+# 2 tagged container image so Kubernetes knows how to find it
+# 3 pushed the tagged images to the remote repo
