@@ -7,3 +7,5 @@ sudo mv -v /tmp/eksctl /usr/local/bin
 # second command moves it to a directory that lets you run eksctl from anywhere in your terminal
 
 # installed this onto our ec2 server
+
+# version on 3/29/25 - 0.206.0
