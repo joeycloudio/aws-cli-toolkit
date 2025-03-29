@@ -21,3 +21,8 @@ sudo usermod -a -G docker ec2-user
 # usermod - modifies user's account in the system
 # -a flag (append) makes sure user doesn't get removed from other groups, without it user would be removed from all groups not listed
 # -G flag specifies the group user should be added to
+
+# REFRESH CONNECTION TO INSTANCE then
+
+groups ec2-user
+#check the user's permissions
