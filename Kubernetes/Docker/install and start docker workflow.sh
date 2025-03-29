@@ -28,3 +28,9 @@ groups ec2-user
 #check the user's permissions
 
 #run build command again BUT YOU NEED TO CD INTO THE SUBDIRECTORY (folder of cloned github repo)
+
+aws ecr create-repository \
+  --repository-name nextwork-flask-backend \
+  --image-scanning-configuration scanOnPush=true \
+
+#create a new ECR repo using the above command
