@@ -29,3 +29,5 @@ spec:
 EOF
 
 nano flask-deployment.yaml
+
+# control-x to exit nano
