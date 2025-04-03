@@ -23,10 +23,12 @@ spec:
     spec:
       containers:
         - name: nextwork-flask-backend
-          image: YOUR-ECR-IMAGE-URI-HERE #You should replace YOUR-ECR-IMAGE-URL-HERE with the URI of the Docker image you pushed to Amazon ECR. This lets Kubernetes know where to pull the container image from when it deploys your application.
+          image: YOUR-ECR-IMAGE-URI-HERE
           ports:
             - containerPort: 8080
 EOF
+
+# You should replace YOUR-ECR-IMAGE-URL-HERE with the URI of the Docker image you pushed to Amazon ECR. This lets Kubernetes know where to pull the container image from when it deploys your application.
 
 nano flask-deployment.yaml
 
