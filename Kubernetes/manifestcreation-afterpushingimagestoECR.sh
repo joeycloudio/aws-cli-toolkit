@@ -31,3 +31,21 @@ EOF
 nano flask-deployment.yaml
 
 # control-x to exit nano
+
+cat << EOF > flask-service.yaml
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextwork-flask-backend
+spec:
+  selector:
+    app: nextwork-flask-backend
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+EOF
+
+# there's no response, just a new terminal prompt when the yaml manifest files are created
