@@ -91,13 +91,15 @@ grep 'version' *.tf
 # won't catch subdirectories
 
 FIX TO GET TF TO INIT TO DEPLOY THE NETWORK
-
+find . -type f -name "*.tf" -exec sed -i '/source *= *"hashicorp\/aws"/,/}/s/version *= *".*"/version = "5.30.0"/' {} +
 find . -type f -name "*.tf" -exec sed -i '/source *= *"hashicorp\/aws"/,/}/s/version *= *".*"/version = "5.30.0"/' {} +
 # Set all aws provider version blocks to a clean value
 
 rm -rf .terraform .terraform.lock.hcl
+rm -rf .terraform .terraform.lock.hcl
 # Clean out old state and modules
 
+terraform init -upgrade -reconfigure
 terraform init -upgrade -reconfigure
 # Reinitialize Terraform cleanly
 terraform validate
@@ -105,3 +107,10 @@ terraform plan -out tfplan
 terraform apply tfplan
 aws ssm describe-parameters --query "Parameters[].Name" --output json | jq -r '.[]' # lists of parameter stores
 aws ssm get-parameter --name /workshop/tf-eks/eks-version --query Parameter.Value --output text # paramater of a specific parameter store
+
+rm -rf .terraform .terraform.lock.hcl
+
+terraform init -upgrade -reconfigure
+
+grep -r 'source *= *"hashicorp/aws"' -A 2 .
+# returned 'source *= *"hashicorp/aws"'
