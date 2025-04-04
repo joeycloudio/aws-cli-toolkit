@@ -52,3 +52,26 @@ terraform plan -out tfplan # plan the deployment
 export AWS_REGION=eu-west-2
 export TF_VAR_region=eu-west-2
 # had to set environment variables for terraform because it was going to create resources in the wrong region
+
+terraform apply tfplan
+
+Apply complete! Resources: 27 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+keyid = "ac6f6968-6473-4dd0-abcb-20ab60761127"
+region = [
+  "eu-west-2",
+]
+s3_bucket = [ #S3 bucket for storing remote state
+  "tf-state-workshop-d9cf288fe27e1712",
+]
+tfid = "d9cf288fe27e1712"
+
+aws ssm describe-parameters --query "Parameters[].Name" --output json | jq -r '.[]'
+# how to see the SSM parameters being stored at this point of the build
+# tf state file metadata, env variables, EKS cluster settings, random project IDs
+# why? centralized and version-controlled method
+aws ssm get-parameter --name "/workshop/tf-eks/cluster-name"
+aws ssm get-parameter --name /workshop/tf-eks/grafana-id --query Parameter.Value --output text
+#to check parameters stored specifically, two ways to do that above
