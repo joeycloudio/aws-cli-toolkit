@@ -51,3 +51,14 @@ spec:
 EOF
 
 # there's no response, just a new terminal prompt when the yaml manifest files are created
+
+kubectl apply -f flask-deployment.yaml
+kubectl apply -f flask-service.yaml
+
+# applying the manifests BUT YOU NEED TO MAKE SURE KUBECTL IS INSTALLED
+
+sudo curl -o /usr/local/bin/kubectl \
+https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.0/2024-09-12/bin/linux/amd64/kubectl
+
+sudo chmod +x /usr/local/bin/kubectl
+# need to give ourselves the permission to use it just like we did for Docker
