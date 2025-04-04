@@ -12,3 +12,8 @@ Ctrl + C
 # needed to stop command due to aws configure not set
 
 aws configure
+
+source ~/.bashrc
+# ran after aws configure and source ./bootstraph.sh
+
+console step - create IAM admin role for EC2, attached to EC2
