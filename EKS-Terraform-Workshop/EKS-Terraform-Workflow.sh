@@ -1,6 +1,10 @@
+BASIC SETUP - 
+
 rm -rf tfekscode
 git clone -b module https://github.com/aws-samples/terraform-eks-code.git tfekscode
 # clone workshop repo
+
+SETUP WORKSHOP TOOLS - 
 
 mv tfekscode environment/
 # move file / reorganize them
@@ -17,3 +21,5 @@ source ~/.bashrc
 # ran after aws configure and source ./bootstraph.sh
 
 console step - create IAM admin role for EC2, attached to EC2
+
+SETUP AWS HOSTS ALIAS FOR DNS LATER IN LAB
