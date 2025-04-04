@@ -75,3 +75,33 @@ aws ssm describe-parameters --query "Parameters[].Name" --output json | jq -r '.
 aws ssm get-parameter --name "/workshop/tf-eks/cluster-name"
 aws ssm get-parameter --name /workshop/tf-eks/grafana-id --query Parameter.Value --output text
 #to check parameters stored specifically, two ways to do that above
+
+CHANGED # region in vars-main.tf
+grep -r "eu-west-1" . # RECURSIVELY SEARCHES EVERY FILE IN THE CURRENT FOLDER FOR THE STRING
+# period (.) means current directory downward
+# find every mention in entire project folder, no matter where it's nested
+# will return a lot of output
+
+cd ~/environment/tfekscode/net
+terraform init
+
+grep 'version' *.tf
+# run in "net" folder because there was a problem with the version
+# only searches *.tf filed in current directory because it's not recursive
+# won't catch subdirectories
+
+FIX TO GET TF TO INIT TO DEPLOY THE NETWORK
+
+find . -type f -name "*.tf" -exec sed -i '/source *= *"hashicorp\/aws"/,/}/s/version *= *".*"/version = "5.30.0"/' {} +
+# Set all aws provider version blocks to a clean value
+
+rm -rf .terraform .terraform.lock.hcl
+# Clean out old state and modules
+
+terraform init -upgrade -reconfigure
+# Reinitialize Terraform cleanly
+terraform validate
+terraform plan -out tfplan
+terraform apply tfplan
+aws ssm describe-parameters --query "Parameters[].Name" --output json | jq -r '.[]' # lists of parameter stores
+aws ssm get-parameter --name /workshop/tf-eks/eks-version --query Parameter.Value --output text # paramater of a specific parameter store
