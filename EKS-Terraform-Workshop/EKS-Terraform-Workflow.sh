@@ -134,3 +134,4 @@ kubectl get nodes
 kubectl get pods -n kube-system
 kubectl get pods -n amazon-cloudwatch
 kubectl get pods -n karpenter # use kube-system namespace per new documentation
+kubectl get deployment -n default
