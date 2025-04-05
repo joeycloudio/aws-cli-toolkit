@@ -133,4 +133,4 @@ aws eks update-kubeconfig --name eks-workshop --region eu-west-2
 kubectl get nodes
 kubectl get pods -n kube-system
 kubectl get pods -n amazon-cloudwatch
-kubectl get pods -n karpenter
+kubectl get pods -n karpenter # use kube-system namespace per new documentation
