@@ -90,14 +90,20 @@ grep 'version' *.tf
 # only searches *.tf filed in current directory because it's not recursive
 # won't catch subdirectories
 
-FIX TO GET TF TO INIT TO DEPLOY THE NETWORK
+FIX TO GET TF TO INIT TO DEPLOY THE NETWORK & EKS CLUSTER CREATION
 find . -type f -name "*.tf" -exec sed -i '/source *= *"hashicorp\/aws"/,/}/s/version *= *".*"/version = "5.30.0"/' {} +
 find . -type f -name "*.tf" -exec sed -i '/source *= *"hashicorp\/aws"/,/}/s/version *= *".*"/version = "5.30.0"/' {} +
+# replaces all locations that don't have version "5.30.0" set - worked, when ran in cluster file
+find . -type f -name "*.tf" -exec sed -i '/source *= *"hashicorp\/aws"/,/}/s/version *= *"[^"]*"/version = ">= 5.30.0"/' {} +
+
 # Set all aws provider version blocks to a clean value
 
 rm -rf .terraform .terraform.lock.hcl
 rm -rf .terraform .terraform.lock.hcl
 # Clean out old state and modules
+# removes recursively (delete directories and everything inside them) and f means force (don't prompt for confirmation) 
+# deletion of terraform working directory that holds downloaded provider plugins and modules and the 
+# provider lock file (pins specific versions of providers)
 
 terraform init -upgrade -reconfigure
 terraform init -upgrade -reconfigure
@@ -113,4 +119,4 @@ rm -rf .terraform .terraform.lock.hcl
 terraform init -upgrade -reconfigure
 
 grep -r 'source *= *"hashicorp/aws"' -A 2 .
-# returned 'source *= *"hashicorp/aws"'
+# returned 'source *= *"hashicorp/aws"' and 2 lines after that
