@@ -127,3 +127,10 @@ terraform init
 terraform validate
 terraform plan -out tfplan
 terraform apply tfplan
+
+VALIDATING AND TESTING COMPONENTS
+aws eks update-kubeconfig --name eks-workshop --region eu-west-2
+kubectl get nodes
+kubectl get pods -n kube-system
+kubectl get pods -n amazon-cloudwatch
+kubectl get pods -n karpenter
