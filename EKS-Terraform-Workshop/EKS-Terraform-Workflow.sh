@@ -120,3 +120,10 @@ terraform init -upgrade -reconfigure
 
 grep -r 'source *= *"hashicorp/aws"' -A 2 .
 # returned 'source *= *"hashicorp/aws"' and 2 lines after that
+
+EKS CLUSTER:
+cd ~/environment/tfekscode/cluster
+terraform init
+terraform validate
+terraform plan -out tfplan
+terraform apply tfplan
