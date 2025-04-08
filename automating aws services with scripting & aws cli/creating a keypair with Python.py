@@ -31,7 +31,7 @@ ec2_client = boto3.client('ec2')
 # obtains a list of all Key Pairs
 keypairs = ec2_client.describe_key_pairs()
 
-for key in keypairs['KeyPairs']:
+for key in keypairs['KeyPairs']: #runs AWS API call to get all key pairs in the region, result is a dictionary []
   if 'lab' not in key['KeyName'].lower():
     print ("Deleting key pair", key ['KeyName'])
     ec2_client.delete_key_pair(KeyName=key['KeyName'])
