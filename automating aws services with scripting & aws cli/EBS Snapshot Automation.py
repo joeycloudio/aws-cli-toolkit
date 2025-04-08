@@ -43,3 +43,5 @@ for volume in ec2.volumes.all():
     for snapshot in snapshots_sorted[:-MAX_SNAPSHOTS]:
       print ("Deleted snapshot " + snapshot[0].id)
       snapshot[0].delete()
+
+# Amazon Data Lifecycle Manager will also rotate snapshots
