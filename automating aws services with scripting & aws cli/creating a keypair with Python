@@ -18,6 +18,8 @@ print(key.get('KeyFingerprint'))
 ./create-keypair.py
 
 DELETING KEYPAIRS, AUTOMATICALLY CLEANUP
+4 suggestions - dry-run for no accidents, add region support bc default boto3 might not be set, add confirmation prompt before deletion especially in prod,
+log or print skipped keys to avoid surprises
 
 #!/usr/bin/env python3
 
