@@ -3,5 +3,5 @@ import boto3
 ec2 = boto3.client('ec2')
 print(dir(ec2))
 
-# tells you all the args it takes)
+# tells you all the args it takes
 help(ec2.describe_instances)
