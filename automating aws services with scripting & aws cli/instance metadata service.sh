@@ -9,3 +9,4 @@
 # AWS CLI and Python SDK automatically retrieved the security credentials via Instance Metadata Service
 
 # this is an example of role-based access (ec2 with an attached role) vs key-based access (locally)
+# this is only availabe with EC2
