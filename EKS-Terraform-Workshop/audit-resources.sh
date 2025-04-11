@@ -14,6 +14,10 @@ aws ce get-cost-and-usage \
   --metrics "UnblendedCost" \
   --output table
 
+# full visibility
+# daily breakdown
+# all services that reported cost, even $0
+# more complete picture for recent usage
 aws ce get-cost-and-usage \
   --time-period "{\"Start\":\"$(date -v -3d +%Y-%m-%d)\",\"End\":\"$(date +%Y-%m-%d)\"}" \
   --granularity DAILY \
