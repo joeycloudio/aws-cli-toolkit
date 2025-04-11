@@ -20,3 +20,13 @@ aws ce get-cost-and-usage \
   --metrics "UnblendedCost" \
   --group-by Type=DIMENSION,Key=SERVICE \
   --output table
+
+# total costs over the last 5 days
+# change granularity from daily to monthly
+# set the day range to 5 days
+aws ce get-cost-and-usage \
+  --time-period "{\"Start\":\"$(date -v -5d +%Y-%m-%d)\",\"End\":\"$(date +%Y-%m-%d)\"}" \
+  --granularity MONTHLY \
+  --metrics "UnblendedCost" \
+  --group-by Type=DIMENSION,Key=SERVICE \
+  --output table
